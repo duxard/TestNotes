@@ -5,3 +5,6 @@ textarea {
 #drop-storage{
     margin: 5px 0;
 }
+.form-control[disabled], .form-control[readonly]{
+    cursor: text !important;
+}

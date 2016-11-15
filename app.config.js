@@ -14,6 +14,9 @@ angular.module('myApp').config(['$locationProvider', '$routeProvider',
         when('/creating', {
             template: '<note-creating></note-creating>',
         }).
+        when('/details/:noteKey', {
+            template: '<note-details></note-details>',
+        }).
         otherwise('/');
     }
 ]);
