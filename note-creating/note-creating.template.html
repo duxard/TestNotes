@@ -9,7 +9,11 @@
                 <label for="comment">Text:</label>
                 <textarea class="form-control" rows="10" id="comment" ng-model="noteText"></textarea>
             </div>
-            <button class="btn btn-primary" ng-click="saveNote()">Save</button>
+            <div class="text-center">
+                <button class="btn btn-primary btn-save" ng-click="saveNote()">Save &amp; close</button>
+                <button class="btn btn-primary btn-add" ng-click="saveNote(newOne)">Save &amp; create</button>
+                <button class="btn btn-primary btn-close" ng-click="close()">Close</button>
+            </div>
         </form>
     </div>
 </div>
