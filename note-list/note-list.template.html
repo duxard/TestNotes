@@ -6,9 +6,9 @@
 </div>
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg12">
-       <div class="panel panel-info note-list" ng-repeat="x in collection">
+       <div class="panel panel-info note-list" ng-repeat="(x,y) in collection">
           <div class="panel-heading">
-              <a href="#!/details/{{x[0]}}" class="btn btn-info btn-sm">
+              <a href="#!/details/{{x}}" class="btn btn-info btn-sm">
                   <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
               </a>
               <button type="button" class="btn btn-danger btn-sm">
@@ -16,8 +16,9 @@
               </button>
           </div>
           <div class="panel-body">
-              <p><strong>Heading: </strong><span class="header-key">{{x[0]}}</span></p>
-              <p><strong>Text: </strong><span>{{x[1]}}</span></p>
+              <p><strong>Heading: </strong><span class="header-key">{{x}}</span></p>
+              <p><strong>Text: </strong><span>{{y.message}}</span></p>
+              <p><strong>Tags: </strong><span>{{y.tags}}</span></p>
           </div>
         </div>
     </div>

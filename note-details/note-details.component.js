@@ -8,7 +8,8 @@ angular.module('noteDetails').component('noteDetails',{
                 $saveCloseBtn = $('.save-close-btn'),
                 $editBtn = $('.edit-btn'),
                 $cancelBtn = $('.cancel-btn'),
-                saveAndClose = true;
+                saveAndClose = true,
+                noteData = JSON.parse(localStorage.getItem($routeParams.noteKey));
         
             function toggleAccess(bVal){
                 $textarea.prop('readonly', bVal);
@@ -16,10 +17,11 @@ angular.module('noteDetails').component('noteDetails',{
                 $saveCloseBtn.prop('disabled', bVal);
                 $cancelBtn.prop('disabled', bVal);
                 $editBtn.prop('disabled', !bVal);
-            }
+            };
         
             $scope.noteHeader = $routeParams.noteKey;
-            $scope.noteText = localStorage.getItem($routeParams.noteKey);
+            $scope.noteText = noteData.message;
+        
             $scope.close = function(){
                 $location.path('/');
             };
@@ -27,12 +29,12 @@ angular.module('noteDetails').component('noteDetails',{
                 toggleAccess(false);
             };
             $scope.cancel = function(){
-                $scope.noteText = localStorage.getItem($routeParams.noteKey);
+                $scope.noteText = noteData.message;
                 toggleAccess(true);
             };
             $scope.save = function(saveAndClose){
-                localStorage.setItem(this.noteHeader, this.noteText);
-                console.log(localStorage);
+                var self = this;
+                localStorage.setItem(self.noteHeader, JSON.stringify({"message":self.noteText, "tags":["#tag1", "#tag2", "#tag3"]}));
                 if(!arguments.length){
                      toggleAccess(true);
                 }else{

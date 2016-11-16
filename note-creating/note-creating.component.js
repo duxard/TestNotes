@@ -6,22 +6,13 @@ angular.module('noteCreating').component('noteCreating', {
                 var $btnSave = $('.btn-save'),
                     $btnAdd =  $('.btn-add'),
                     $btnClose = $('.btn-close'),
-                    newOne = "true";
+                    newOne = "true",
+                    noteData = {},
+                    tempTags = ["#tag1", "#tag2", "#tag3"];
                             
                 $scope.saveNote = function(newOne){
-                    localStorage.setItem(this.noteHeader, this.noteText);
-      /****************************************************            
-            var header = "one";
-            var text = "lorem ipsum dlorum";
-            var tags = ['one','two','three'];
-            var myObj = {msg: text, hash: tags};
-            
-            var sObj = JSON.stringify(myObj);
-            localStorage.setItem(header , sObj);
-            
-     /****************************************************/          
-                    
-                    console.log(localStorage);
+                    var self = this;
+                    localStorage.setItem(self.noteHeader, JSON.stringify({"message":self.noteText, "tags":tempTags}));
                     if(!arguments.length){
                         $window.location.href = '/';
                     }else{
