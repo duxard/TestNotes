@@ -18,9 +18,10 @@
     <script src="note-creating/note-creating.component.js"></script>
     <script src="note-details/note-details.module.js"></script>
     <script src="note-details/note-details.component.js"></script>
+    <script src="core/core.module.js"></script>
+    <script src="core/core.service.js"></script>
 </head>
 <body>
-    
     <div class="container-fluid" ng-controller="HeadCtrl">
         <div class="row">
             <div class="navbar navbar-inverse">
@@ -44,12 +45,9 @@
             </div>
         </div>
     </div>
-    
-    <div class="container my-top-margin">
+     <div class="container my-top-margin">
         <div ng-view></div>
     </div>
-   
-    
 </body>
 </html>
 

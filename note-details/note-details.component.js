@@ -2,13 +2,14 @@
 
 angular.module('noteDetails').component('noteDetails',{
     templateUrl: 'note-details/note-details.template.html',
-    controller: ['$scope', '$routeParams', '$location', function($scope, $routeParams, $location){
+    controller: ['$scope', '$routeParams', '$location', 'tagsService', function($scope, $routeParams, $location, tagsService){
             var $textarea = $('textarea'),
                 $saveBtn = $('.save-btn'),
                 $saveCloseBtn = $('.save-close-btn'),
                 $editBtn = $('.edit-btn'),
                 $cancelBtn = $('.cancel-btn'),
                 saveAndClose = true,
+                noteTags = [],
                 noteData = JSON.parse(localStorage.getItem($routeParams.noteKey));
         
             function toggleAccess(bVal){
@@ -21,6 +22,7 @@ angular.module('noteDetails').component('noteDetails',{
         
             $scope.noteHeader = $routeParams.noteKey;
             $scope.noteText = noteData.message;
+            $scope.tagsList = noteData.tags;
         
             $scope.close = function(){
                 $location.path('/');
@@ -34,7 +36,13 @@ angular.module('noteDetails').component('noteDetails',{
             };
             $scope.save = function(saveAndClose){
                 var self = this;
-                localStorage.setItem(self.noteHeader, JSON.stringify({"message":self.noteText, "tags":["#tag1", "#tag2", "#tag3"]}));
+                //tags search
+                noteTags = tagsService.findTags(self.noteText);
+                //save new record
+                localStorage.setItem(self.noteHeader, JSON.stringify({"message":self.noteText, "tags":noteTags}));
+                //renew tags list
+                $scope.tagsList = noteTags;
+                
                 if(!arguments.length){
                      toggleAccess(true);
                 }else{

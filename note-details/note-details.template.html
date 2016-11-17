@@ -7,7 +7,7 @@
             </div>
             <div class="form-group">
                 <label for="comment">Text:</label>
-                <textarea class="form-control" rows="10" id="comment" ng-model="noteText" readonly></textarea>
+                <textarea class="form-control" rows="7" id="comment" ng-model="noteText" readonly></textarea>
             </div>
             <div class="text-center">
                 <button class="btn btn-primary save-btn" ng-click="save()" disabled>Save</button>
@@ -17,5 +17,11 @@
                 <button class="btn btn-primary close-btn" ng-click="close()">Close</button>
             </div>
         </form>
+        <div class="tags-container">
+            <p>Tags:</p>
+            <ul class="tags clearfix">
+                <li ng-repeat="item in tagsList"><a href="#">{{item}}</a></li>
+            </ul>
+        </div>
     </div>
 </div>

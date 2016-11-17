@@ -1,6 +1,6 @@
 "use strict";
 
-var app = angular.module('myApp', ['ngRoute', 'noteList', 'noteCreating', 'noteDetails']);
+var app = angular.module('myApp', ['ngRoute', 'noteList', 'noteCreating', 'noteDetails', 'core']);
 
 
 app.controller('HeadCtrl', function($scope){
