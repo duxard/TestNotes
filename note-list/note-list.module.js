@@ -1,3 +1,3 @@
 "use strict";
 
-angular.module('noteList', []);
+angular.module('noteList', ['ngRoute', 'core']);

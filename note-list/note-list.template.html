@@ -1,27 +1,39 @@
 <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg12">
-        <p class="text-center"><a href="#!/creating" class="btn btn-primary btn-lg btn-block">New note</a></p>
-        <hr>
+   <div class="col-lg-2 col-md-2 col-sm-3">
+        <p class="text-center">
+        Search:
+        <input id="tagInput" ng-change="watchFilter()" ng-model="tagName"/>
+        </p>
     </div>
-</div>
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg12">
-       <div class="panel panel-info note-list" ng-repeat="(x,y) in collection">
-          <div class="panel-heading">
-              <a href="#!/details/{{x}}" class="btn btn-info btn-sm">
-                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-              </a>
-              <button type="button" class="btn btn-danger btn-sm">
-                  <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="removeNote($event)"></span>
-              </button>
-          </div>
-          <div class="panel-body">
-            <p><strong>Heading: </strong><span class="header-key">{{x}}</span></p>
-            <p><strong>Text: </strong><span>{{y.message}}</span></p>
-            <ul class="tags clearfix">
-                <li ng-repeat="item in y.tags"><a href="#">{{item}}</a></li>
-            </ul>
-          </div>
+    <div class="col-lg-10 col-md-10 col-sm-9" >
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg12">
+                <p class="text-center"><a href="#!/creating" class="btn btn-primary btn-lg btn-block">New note</a></p>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg12">
+               <div class="panel panel-info note-list" ng-repeat="(x,y) in collection | tagFilter:tagName">
+                  <div class="panel-heading">
+                      <a href="#!/details/{{x}}" class="btn btn-info btn-sm">
+                          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                      </a>
+                      <button type="button" class="btn btn-danger btn-sm">
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="removeNote($event)"></span>
+                      </button>
+                  </div>
+                  <div class="panel-body">
+                    <p><strong>Heading: </strong><span class="header-key">{{x}}</span></p>
+                    <p><strong>Text: </strong><span>{{y.message}}</span></p>
+                    <ul class="tags clearfix">
+                        <li ng-repeat="i in y.tags"><a href="#">{{i}}</a></li>
+                    </ul>
+                  </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+   
+
