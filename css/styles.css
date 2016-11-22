@@ -88,3 +88,20 @@ textarea {
     width: 100%;
     max-width:200px;
 }
+
+/*error block*/
+#error-block{
+    display: none;
+    width: 100%;
+    height: 53px;
+    background: #FCDEDE;
+    border: 1px solid #D2B2B2;
+    border-radius: 10px;
+    position: relative;
+}
+
+#msg-block{
+    display: table-cell;
+    vertical-align: middle;
+}
+

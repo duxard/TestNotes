@@ -21,6 +21,7 @@
     <script src="core/core.module.js"></script>
     <script src="core/core.service.js"></script>
     <script src="core/core.tag-filter.js"></script>
+    <script src="core/error-message.js"></script>
 </head>
 <body>
     <div class="container-fluid" ng-controller="HeadCtrl">
@@ -35,7 +36,8 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <button id="drop-storage" type="button" class="btn btn-danger" ng-click="dropStorage()">DROP</button>
+                        <button id="drop-storage" type="button" class="btn btn-danger" ng-click="dropStorage()">Drop</button>
+                         <button id="creat-storage" type="button" class="btn btn-success" ng-click="createStorage()">Add</button>
                     </div>
                     <div class="collapse navbar-collapse" id="responsive-menu">
                         <ul class="nav navbar-nav">
