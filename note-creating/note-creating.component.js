@@ -12,19 +12,22 @@ angular.module('noteCreating').component('noteCreating', {
                 $scope.saveNote = function(newOne){
                     var self = this;
                     
-                    if(localStorage.getItem(self.noteHeader) === null){
-                        noteTags = tagsService.findTags(self.noteText);
-                        localStorage.setItem(self.noteHeader, JSON.stringify({"message":self.noteText, "tags":noteTags}));
+                    if(self.noteHeader == undefined || self.noteHeader.length === 0 || self.noteText == undefined || self.noteText.length === 0 ){
+                        errorBlock.errShow().errMsg('Empty fields!');
                     }else{
-                        alert("The header arleady exists!");
-                    }
-                    
-                
-                    if(!arguments.length){
-                        $window.location.href = '/';
-                    }else{
-                        $scope.noteHeader = '';
-                        $scope.noteText = '';
+                        if(localStorage.getItem(self.noteHeader) !== null){
+                            errorBlock.errShow().errMsg('Item already existed!');
+                        }else{
+                            errorBlock.errHide();
+                            noteTags = tagsService.findTags(self.noteText);
+                            localStorage.setItem(self.noteHeader, JSON.stringify({"message":self.noteText, "tags":noteTags}));
+                            if(!arguments.length){
+                                $window.location.href = '/';
+                            }else{
+                                $scope.noteHeader = '';
+                                $scope.noteText = '';
+                            }
+                        }
                     }
                 }
                 

@@ -1,5 +1,13 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg12">
+        <div class="error-block">
+         <div class="error-icon">
+             <span class="glyphicon glyphicon-remove-circle"></span>
+         </div>
+          <div class="msg-block">
+              <p class="error-text"></p>
+          </div>
+        </div>
         <form>
             <div class="form-group">
                 <label for="heading">Heading:</label>
@@ -18,7 +26,7 @@
             </div>
         </form>
         <div class="tags-container">
-            <p>Tags:</p>
+            <hr>
             <ul class="tags clearfix">
                 <li ng-repeat="item in tagsList"><a href="#">{{item}}</a></li>
             </ul>
