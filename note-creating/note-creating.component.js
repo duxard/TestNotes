@@ -2,7 +2,7 @@
 
 angular.module('noteCreating').component('noteCreating', {
     templateUrl: 'note-creating/note-creating.template.html',
-    controller: ['$scope', '$window', 'tagsService', 'errorBlock', function($scope, $window, tagsService, errorBlock){
+    controller: ['$scope', '$window', 'tagsService', function($scope, $window, tagsService){
                 var $btnSave = $('.btn-save'),
                     $btnAdd =  $('.btn-add'),
                     $btnClose = $('.btn-close'),

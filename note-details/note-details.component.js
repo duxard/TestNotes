@@ -2,7 +2,7 @@
 
 angular.module('noteDetails').component('noteDetails',{
     templateUrl: 'note-details/note-details.template.html',
-    controller: ['$scope', '$routeParams', '$location', 'tagsService', 'errorBlock', function($scope, $routeParams, $location, tagsService, errorBlock){
+    controller: ['$scope', '$routeParams', '$location', 'tagsService', 'AccessService', function($scope, $routeParams, $location, tagsService, AccessService){
             var $textarea = $('textarea'),
                 $saveBtn = $('.save-btn'),
                 $saveCloseBtn = $('.save-close-btn'),
@@ -10,8 +10,8 @@ angular.module('noteDetails').component('noteDetails',{
                 $cancelBtn = $('.cancel-btn'),
                 saveAndClose = true,
                 noteTags = [],
-                noteData = JSON.parse(localStorage.getItem($routeParams.noteKey)),
-                accessToken = true;
+                noteData = JSON.parse(localStorage.getItem($routeParams.noteKey));
+
         
             function toggleAccess(bVal){
                 $textarea.prop('readonly', bVal);
