@@ -91,7 +91,7 @@ textarea {
 
 /*error block*/
 .error-block{
-    display: none;
+/*    display: none;*/
     width: 100%;
     min-height: 53px;
     background: #FCDEDE;
@@ -117,4 +117,5 @@ textarea {
 .error-text{
     margin: 0;
 }
+
 

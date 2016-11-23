@@ -24,7 +24,12 @@ angular.module('noteList').component('noteList', {
                     $headerKey = $elem.find(".header-key").html();
                 $elem.remove();
                 window.localStorage.removeItem($headerKey);
-            }
+            };
+            
+           $scope.tempFunc = function(event){
+               event.preventDefault();
+               $scope.tagName = event.target.outerText;
+           }
         }
     ]
 });

@@ -10,7 +10,8 @@ angular.module('noteDetails').component('noteDetails',{
                 $cancelBtn = $('.cancel-btn'),
                 saveAndClose = true,
                 noteTags = [],
-                noteData = JSON.parse(localStorage.getItem($routeParams.noteKey));
+                noteData = JSON.parse(localStorage.getItem($routeParams.noteKey)),
+                accessToken = true;
         
             function toggleAccess(bVal){
                 $textarea.prop('readonly', bVal);
@@ -20,6 +21,7 @@ angular.module('noteDetails').component('noteDetails',{
                 $editBtn.prop('disabled', !bVal);
             };
         
+            $scope.errState = false;
             $scope.noteHeader = $routeParams.noteKey;
             $scope.noteText = noteData.message;
             $scope.tagsList = noteData.tags;
@@ -33,35 +35,22 @@ angular.module('noteDetails').component('noteDetails',{
             $scope.cancel = function(){
                 $scope.noteText = noteData.message;
                 toggleAccess(true);
+                $scope.errState = false;
             };
             $scope.save = function(saveAndClose){
                 var self = this;
-                //tags search
-//                noteTags = tagsService.findTags(self.noteText);
-//                //save new record
-//                localStorage.setItem(self.noteHeader, JSON.stringify({"message":self.noteText, "tags":noteTags}));
-//                //renew tags list
-//                $scope.tagsList = noteTags;
-//                
-//                if(!arguments.length){
-//                     toggleAccess(true);
-//                }else{
-//                    $location.path('/');
-//                }
-                
-                
-                
+   
                 if(self.noteText.length === 0){
-                    console.log("false");
-                    errorBlock.errShow().errMsg('Empty field!');
+                    self.errState = true;
+                    self.errText = 'Empty fields!';
                 }else{
-                    errorBlock.errHide();
+                    self.errState = false;
                     //tags search
                     noteTags = tagsService.findTags(self.noteText);
                     //save new record
                     localStorage.setItem(self.noteHeader, JSON.stringify({"message":self.noteText, "tags":noteTags}));
                     //renew tags list
-                    $scope.tagsList = noteTags;
+                    self.tagsList = noteTags;
 
                     if(!arguments.length){
                          toggleAccess(true);
@@ -69,10 +58,8 @@ angular.module('noteDetails').component('noteDetails',{
                         $location.path('/');
                     }
                 }
-                
-                
-                
             };
         }
     ]
 });
+

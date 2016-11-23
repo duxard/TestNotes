@@ -8,17 +8,21 @@ angular.module('noteCreating').component('noteCreating', {
                     $btnClose = $('.btn-close'),
                     newOne = "true",
                     noteTags = [];
-        
+
+  
+                $scope.errState = false;
                 $scope.saveNote = function(newOne){
                     var self = this;
                     
                     if(self.noteHeader == undefined || self.noteHeader.length === 0 || self.noteText == undefined || self.noteText.length === 0 ){
-                        errorBlock.errShow().errMsg('Empty fields!');
+                        $scope.errState = true;
+                        $scope.errText = 'Empty fields!';
                     }else{
                         if(localStorage.getItem(self.noteHeader) !== null){
-                            errorBlock.errShow().errMsg('Item already existed!');
+                            $scope.errState = true;
+                            $scope.errText = 'Item already existed!';
                         }else{
-                            errorBlock.errHide();
+                            $scope.errState = false;
                             noteTags = tagsService.findTags(self.noteText);
                             localStorage.setItem(self.noteHeader, JSON.stringify({"message":self.noteText, "tags":noteTags}));
                             if(!arguments.length){

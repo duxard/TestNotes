@@ -1,18 +1,16 @@
 "use strict";
 
-angular.module('core').factory('errorBlock', function(){
+angular.module('core').service('errorBlock', function(){
     var $errBlock = $('.error-block'),
         $errorText = $('.error-text');
-    return {
-        errShow: function(){
-            $errBlock.css('display', 'block');
-            return this;
-        },
-        errMsg: function(text){
-            $errorText.html(text);
-        },
-        errHide: function(){
-            $errBlock.css('display', 'none');
-        }
-    }
-})
+
+    this.errShow = function(){
+        $errBlock.css('display', 'block');
+    };
+    this.errMsg = function(text){
+        $errorText.html(text);
+    };
+    this.errHide = function(){
+        $errBlock.css('display', 'none');
+    };
+});
