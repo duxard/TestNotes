@@ -24,13 +24,15 @@ angular.module('noteCreating').component('noteCreating', {
                         }else{
                             $scope.errState = false;
                             noteTags = tagsService.findTags(self.noteText);
-                            localStorage.setItem(self.noteHeader, JSON.stringify({"message":self.noteText, "tags":noteTags}));
+                            localStorage.setItem(self.noteHeader, JSON.stringify({"message":self.noteText, "tags":noteTags, "date": new Date().toLocaleString("en-US")}));
+                            
                             if(!arguments.length){
                                 $window.location.href = '/';
                             }else{
                                 $scope.noteHeader = '';
                                 $scope.noteText = '';
                             }
+                            console.log(new Date().toLocaleString("en-US"));
                         }
                     }
                 }

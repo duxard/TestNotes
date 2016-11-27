@@ -91,7 +91,6 @@ textarea {
 
 /*error block*/
 .error-block{
-/*    display: none;*/
     width: 100%;
     min-height: 53px;
     background: #FCDEDE;
@@ -117,5 +116,10 @@ textarea {
 .error-text{
     margin: 0;
 }
-
+/*date style*/
+.date-style{
+    font-size: 12px;
+    font-style: italic;
+    margin: 0;
+}
 

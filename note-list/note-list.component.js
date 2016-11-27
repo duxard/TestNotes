@@ -9,23 +9,21 @@ angular.module('noteList').component('noteList', {
             }
             $scope.collection = objNotes;
         
-            //если в отфильтрованном списке 
-            //будет удалена какая-либо заметка 
-            //страницу нужно будет перезагрузить.
-            //ВРЕМЕННОЕ решение
-            $scope.watchFilter = function(event){
-                if(this.tagName == ""){
-                     $route.reload();
-                }
-            }
-            
             $scope.removeNote = function(event){
-                var $elem = $(event.target).closest(".note-list"),
-                    $headerKey = $elem.find(".header-key").html();
-                $elem.remove();
-                window.localStorage.removeItem($headerKey);
+                var headerKey = $(event.target).
+                                 closest(".note-list").
+                                 find(".header-key").
+                                 html();
+                //remove the object from scope
+                angular.forEach($scope.collection, function(value, index){
+                    if(index == headerKey){
+                        delete $scope.collection[index];
+                    }
+                });
+                //remove the object from localStorage
+                window.localStorage.removeItem(headerKey);
             };
-            
+        
            $scope.tempFunc = function(event){
                event.preventDefault();
                $scope.tagName = event.target.outerText;

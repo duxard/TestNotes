@@ -1,16 +1,19 @@
 "use strict";
 
 angular.module('core').filter('tagFilter', function(){
-    return function(input, search){
+    return function(input, searchItem){
         var out = {};
-        if(search == '' || search == undefined){
+        if(searchItem == '' || searchItem == undefined){
             return input;
-        }else if(search == ''){
+        }else if(searchItem == ''){
             return input;
         }
         else{
             angular.forEach(input, function(val, key){
-                if(val.tags.some(function(item){return item == search})){
+                if(val.tags.some(function(item){
+                    //character-oriented search
+                    return (item.search(searchItem) != -1);
+                })){
                      out[key] = val;
                 }
             });

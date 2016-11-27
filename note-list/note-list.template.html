@@ -19,8 +19,8 @@
                       <a href="#!/details/{{x}}" class="btn btn-info btn-sm">
                           <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                       </a>
-                      <button type="button" class="btn btn-danger btn-sm">
-                          <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="removeNote($event)"></span>
+                      <button type="button" class="btn btn-danger btn-sm" ng-click="removeNote($event)">
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                       </button>
                   </div>
                   <div class="panel-body">
@@ -29,6 +29,7 @@
                     <ul class="tags clearfix">
                         <li ng-repeat="i in y.tags"><a href="#" ng-click="tempFunc($event)">{{i}}</a></li>
                     </ul>
+                    <p class="pull-right date-style">{{y.date}}</p>
                   </div>
                 </div>
             </div>

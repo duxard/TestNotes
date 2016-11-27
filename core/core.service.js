@@ -8,11 +8,13 @@ angular.module('core').factory('tagsService', function(){
             arr = str.match(/(^|\s)(#\w+)\b/g);
             if(arr !== null){
                 result = arr.map(function(item){
+                    //removing new lines
+                    var str = item.replace(/\n/g,'');
                     //removing spaces & hashtags in the beginning of the tags
-                    if(item.charAt(0) === " "){
-                        return item.substr(2);
+                    if(str.charAt(0) === " "){
+                        return str.substr(2);
                     }else{
-                        return item.substr(1);
+                        return str.substr(1);
                     }
                 }); 
             }
