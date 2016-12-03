@@ -40,6 +40,7 @@ angular.module('noteCreating').component('noteCreating', {
                 $scope.close = function(){
                     $window.location.href = '/';
                 }
+
             }
         ]
     }

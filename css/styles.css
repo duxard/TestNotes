@@ -3,9 +3,19 @@
     display:block;
     clear:both;
 }
+
 textarea {
     resize: none;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
 }
+
+#noteMsg{
+    width: 100%;
+}
+
 #drop-storage{
     margin: 5px 0;
 }
@@ -121,5 +131,9 @@ textarea {
     font-size: 12px;
     font-style: italic;
     margin: 0;
+}
+
+.btn{
+    margin-bottom: 2px !important;
 }
 

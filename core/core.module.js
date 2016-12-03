@@ -1,3 +1,3 @@
 "use strict";
 
-angular.module('core', ['ngCookies']);
+angular.module('core', []);

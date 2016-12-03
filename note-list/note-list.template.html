@@ -25,7 +25,7 @@
                   </div>
                   <div class="panel-body">
                     <p><strong>Heading: </strong><span class="header-key">{{x}}</span></p>
-                    <p><strong>Text: </strong><span>{{y.message}}</span></p>
+                    <p><strong>Text: </strong><span>{{y.message | limitTo: 120}}</span></p>
                     <ul class="tags clearfix">
                         <li ng-repeat="i in y.tags"><a href="#" ng-click="tempFunc($event)">{{i}}</a></li>
                     </ul>

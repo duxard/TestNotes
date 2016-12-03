@@ -58,6 +58,10 @@ angular.module('noteDetails').component('noteDetails',{
                     }
                 }
             };
+                            
+            $scope.notLink = function(event){
+                event.preventDefault();
+            }
         }
     ]
 });
